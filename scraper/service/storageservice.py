@@ -10,7 +10,7 @@ class StorageService():
     def store_text(self, text, identifier):
         path = default_storage.base_location + str(identifier) + '/text/' + 'web_content.txt'
         os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, 'w') as file:
+        with open(path, 'w', encoding="utf-8") as file:
             file.write(text)
             file.close()
 
