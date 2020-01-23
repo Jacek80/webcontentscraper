@@ -3,7 +3,6 @@ from django.urls import path, re_path
 from django.conf.urls import url,include
 from accounts import views as accounts_views
 from scraper import views as scraper_views
-from rest_framework_simplejwt import views as jwt_views
 from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
