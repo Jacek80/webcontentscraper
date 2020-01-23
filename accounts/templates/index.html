@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body_block %}<div class="container">
+  <div class="jumbotron">
+    <h1>Web Content Scraper</h1>
+    {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+        <p>Welcome to the Web Content Scraper</p>
+        <h2>Usage:</h2>
+        <ul>
+            <li><a class="navbar-link" href="{% url 'scraper-list' %}">{% url 'scraper-list' %}</a> - API for Url Content Scraping (GET/POST/DELETE allowed)</li>
+        </ul>
+    {% else %}
+        <h2>Register or Login to GEO scraper</h2>
+    {% endif %}
+  </div>
+</div>{% endblock %}

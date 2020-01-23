@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py qcluster
+    volumes:
+      - .:/webcontentscraper
+    ports:
+      - "8000:8000"
+  migration:
+    build: .
+    command: python manage.py migrate --noinput
+    volumes:
+      - .:/webcontentscraper
