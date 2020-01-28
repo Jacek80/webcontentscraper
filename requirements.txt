@@ -5,3 +5,4 @@ djangorestframework==3.11.0
 django-q==1.1.0
 pytz==2019.3
 sqlparse==0.3.0
+beautifulsoup4==4.8.2
