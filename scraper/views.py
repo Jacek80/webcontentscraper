@@ -51,7 +51,7 @@ class ScraperViews(viewsets.ViewSet):
                 instance = serializer.save()
 
                 if settings.RUN_IN_ASYNC_MODE:
-                    async_task('self.scrape_content', address, instance.id, sync=True)
+                    async_task('self.scrape_content', address, instance.id)
                 else:
                     self.scrape_content(address, instance.id)
 
