@@ -4,7 +4,7 @@ from django.utils.html import strip_tags
 from django.template.defaultfilters import stringfilter
 from django.utils.safestring import mark_safe
 from django.utils.encoding import force_text
-
+from bs4 import BeautifulSoup
 
 register = template.Library()
 
@@ -45,7 +45,17 @@ class TextService():
 
     @staticmethod
     def get_images_from_text(text):
-        images_list_a = re.findall(r'<img src=\"([^\"]*?\.(?:jpg|jpeg|gif|png))\"', text, flags=re.IGNORECASE)
-        images_list_b = re.findall(r'<img src=\'([^\']*?\.(?:jpg|jpeg|gif|png))\'', text, flags=re.IGNORECASE)
 
-        return images_list_a + images_list_b
+        soup = BeautifulSoup(text)
+
+        images_list = []
+
+        for img in soup.findAll('img'):
+            img_src = img.get('src')
+
+            extension = img_src.split('.')[-1]
+
+            if extension.lower() in ['jpg', 'jpeg', 'gif', 'png']:
+                images_list.append(img_src)
+
+        return images_list
